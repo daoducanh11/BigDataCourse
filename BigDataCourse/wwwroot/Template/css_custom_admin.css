@@ -30,11 +30,14 @@
 .create-new {
     background-color: #41a741;
     color: white;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding: 6.5px;
     border-radius: 5px;
-    margin: 10px 0px;
+    /*margin: 10px 0px;*/
     display: inline-block;
     border: 1px solid;
+    width: 100%;
+    text-align: center;
 }
 
 a.create-new:hover {
@@ -305,4 +308,11 @@ ul#ui-id-1 {
 
 .form-group {
     align-items: center;
+}
+
+.pagination li.active span {
+    padding: 10px 15px;
+    background-color: #2ea1f8;
+    border-radius: 3px;
+    color: #fff;
 }

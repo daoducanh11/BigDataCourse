@@ -1,0 +1,123 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<BigDataCourse.Areas.Admin.Models.Tag>
+
+@{
+    ViewBag.Title = "Thẻ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Danh sách thẻ</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid card card-outline card-info">
+        <div class="form-search">
+            @using (Html.BeginForm("Index", "Tag", FormMethod.Get, new { }))
+            {
+                <div class="row" style="align-items: center;">
+                    <div class="col-1">
+                        <span>Tên thẻ</span>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" name="name" value="@ViewBag.name" placeholder="Nhập từ khóa tìm kiếm">
+                    </div>
+
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-default btn-pro" title="Tìm kiếm" style="background-color: #2ea1f8; flex: auto; width: 100%;">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-1">
+                        <a href="~/BacSiArea/BacSiHome" class="btn btn-default btn-pro" title="Làm mới" style="background-color: #34a544; width: 100%;">
+                            <i class="fas fa-sync-alt"></i>
+                        </a>
+                    </div>
+                    <div class="col-1">
+                        
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="create-new" data-toggle="modal" data-target="#exampleModalCenter">
+                            <i class="fas fa-plus"></i>
+                            Thêm mới
+                        </button>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 60px;">STT</th>
+                    <th class="text-center">Tên thẻ</th>
+                    <th class="text-center" style="width: 130px;">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Select((value, i) => new { i, value }))
+                {
+                    <tr>
+                        <td class="text-center">
+                            @(ViewBag.pageOffset + item.i + 1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.value.Name)
+                        </td>
+
+                        <td class="text-center">
+                            <a href="~/LeTan/BenhNhi/Edit/@item.value._id" title="Sửa">
+                                <i class="fas fa-edit" aria-hidden="true"></i>
+                            </a>
+                            <a href="~/LeTan/BenhNhi/Delete/@item.value._id" title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @name = @ViewBag.name }))
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                @using (Html.BeginForm("Create", "Tag", FormMethod.Post, new { }))
+                    {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm mới thẻ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="row" style="align-items: center;">
+                            <div class="col-1">
+                                <span>Tên thẻ</span>
+                            </div>
+                            <div class="col-11">
+                                <input type="text" class="form-control" name="tagName" placeholder="Nhập từ tên thẻ">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

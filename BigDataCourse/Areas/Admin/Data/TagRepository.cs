@@ -4,6 +4,7 @@ using BigDataCourse.Areas.Admin.Data.Interface;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Tag = BigDataCourse.Areas.Admin.Models.Tag;
+using X.PagedList;
 
 namespace BigDataCourse.Areas.Admin.Data
 {
@@ -24,6 +25,23 @@ namespace BigDataCourse.Areas.Admin.Data
                     .ToListAsync();
 
                 return lst;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Tag>> Get(string name, int page, int pageSize)
+        {
+            try
+            {
+                List<Tag> lst = await _context.Tags.Find(item => item.Name.Contains(name))
+                    .ToListAsync();
+                if (lst.Count > 0)
+                    return lst.ToPagedList<Tag>(page, pageSize);
+                return new List<Tag>();
             }
             catch (Exception ex)
             {

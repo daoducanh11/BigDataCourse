@@ -3,7 +3,7 @@ using BigDataCourse.Areas.Admin.Models;
 using BigDataCourse.Areas.Admin.Models.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using PagedList;
+using X.PagedList;
 
 namespace BigDataCourse.Areas.Admin.Data
 {
