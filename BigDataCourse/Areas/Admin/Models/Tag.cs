@@ -3,13 +3,21 @@ using MongoDB.Bson;
 
 namespace BigDataCourse.Areas.Admin.Models
 {
-    public class Articles
+    public class Tag
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId _id { get; set; }
-        public int ArticleID { get; set; }
-        public string ArticleName { get; set; }
-        public List<string> ArticleTags { get; set; }
+        public string Name { get; set; }
+
+        public Tag(string name)
+        {
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

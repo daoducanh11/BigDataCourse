@@ -28,35 +28,35 @@ namespace BigDataCourse.Areas.Admin.Models.Settings
                 return _database.GetCollection<Categories>("Category");
             }
         }
-        public IMongoCollection<UserActions> UserActions
+        public IMongoCollection<UserAction> UserActions
         {
             get
             {
-                return _database.GetCollection<UserActions>("UserAction");
+                return _database.GetCollection<UserAction>("UserAction");
             }
         }
 
-        public IMongoCollection<Articles> Articles
+        public IMongoCollection<Article> Articles
         {
             get
             {
-                return _database.GetCollection<Articles>("Article");
+                return _database.GetCollection<Article>("Article");
             }
         }
 
-        public IMongoCollection<Tags> Tags
+        public IMongoCollection<Tag> Tags
         {
             get
             {
-                return _database.GetCollection<Tags>("Tag");
+                return _database.GetCollection<Tag>("Tag");
             }
         }
 
-        public IMongoCollection<Users> Users
+        public IMongoCollection<User> Users
         {
             get
             {
-                return _database.GetCollection<Users>("User");
+                return _database.GetCollection<User>("User");
             }
         }
     }

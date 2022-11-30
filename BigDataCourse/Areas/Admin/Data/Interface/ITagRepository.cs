@@ -4,6 +4,6 @@ namespace BigDataCourse.Areas.Admin.Data.Interface
 {
     public interface ITagRepository
     {
-        Task<IEnumerable<Tags>> GetAll();
+        Task<List<Tag>> GetAll();
     }
 }

@@ -2,6 +2,7 @@
 using BigDataCourse.Areas.Admin.Models;
 using Microsoft.Extensions.Options;
 using BigDataCourse.Areas.Admin.Data.Interface;
+using MongoDB.Driver;
 
 namespace BigDataCourse.Areas.Admin.Data
 {
@@ -14,11 +15,11 @@ namespace BigDataCourse.Areas.Admin.Data
             _context = new DBContext(settings);
         }
 
-        public async Task<IEnumerable<Users>> GetAll()
+        public async Task<List<User>> GetAll()
         {
             try
             {
-                List<Users> lst = await _context.Users.Find(_ => true)
+                List<User> lst = await _context.Users.Find(_ => true)
                     .ToListAsync();
 
                 return lst;

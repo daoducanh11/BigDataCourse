@@ -3,6 +3,7 @@ using BigDataCourse.Areas.Admin.Models;
 using BigDataCourse.Areas.Admin.Data.Interface;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Tag = BigDataCourse.Areas.Admin.Models.Tag;
 
 namespace BigDataCourse.Areas.Admin.Data
 {
@@ -15,11 +16,11 @@ namespace BigDataCourse.Areas.Admin.Data
             _context = new DBContext(settings);
         }
 
-        public async Task<IEnumerable<Tags>> GetAll()
+        public async Task<List<Tag>> GetAll()
         {
             try
             {
-                List<Tags> lst = await _context.Tags.Find(_ => true)
+                List<Tag> lst = await _context.Tags.Find(_ => true)
                     .ToListAsync();
 
                 return lst;

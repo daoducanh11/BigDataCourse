@@ -34,24 +34,24 @@ namespace BigDataCourse.Areas.Admin.Controllers
             return View(ad);
         }
 
-        public async Task<IActionResult> Add()
-        {
-            string[] rows = tmp.Split("\r\n");
-            foreach (string row in rows)
-            {
-                string[] strs = row.Split(",");
-                UserActions u = new UserActions();
-                u.Day = new DateTime(2022,11, int.Parse(strs[0])).AddHours(18);
-                u.Action = strs[1];
-                u.UserID = int.Parse(strs[2]);
-                u.UserName = strs[3];
-                u.ArticleID = int.Parse(strs[4]);
-                u.ArticleName = strs[5];
-                await _userActionRepository.Create(u);
-            }
-            
-            return View();
-        }
+        //public async Task<IActionResult> Add()
+        //{
+        //    string[] rows = tmp.Split("\r\n");
+        //    foreach (string row in rows)
+        //    {
+        //        string[] strs = row.Split(",");
+        //        UserAction u = new UserAction();
+        //        u.Day = new DateTime(2022,11, int.Parse(strs[0])).AddHours(18);
+        //        u.Action = strs[1];
+        //        u.UserID = int.Parse(strs[2]);
+        //        u.UserName = strs[3];
+        //        u.ArticleID = int.Parse(strs[4]);
+        //        u.ArticleName = strs[5];
+        //        await _userActionRepository.Create(u);
+        //    }
+
+        //    return View();
+        //}
 
         public async Task<IActionResult> Add2()
         {
@@ -59,15 +59,13 @@ namespace BigDataCourse.Areas.Admin.Controllers
             foreach (string row in rows)
             {
                 string[] strs = row.Split(",");
-                Articles u = new Articles();
-                u.ArticleID = int.Parse(strs[0]);
-                u.ArticleName = strs[1];
-                List<string> list = new List<string>();
-                for (int i=2; i<strs.Length; i++)
+                List<Tag> list = new List<Tag>();
+                for (int i = 2; i < strs.Length; i++)
                 {
-                    list.Add(strs[i].Trim());
+                    list.Add(new Tag(strs[i].Trim()));
                 }
-                u.ArticleTags = list;
+                Article u = new Article(int.Parse(strs[0]), strs[1], list);
+
                 await _articleRepository.Create(u);
             }
 

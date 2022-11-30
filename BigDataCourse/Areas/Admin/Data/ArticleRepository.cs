@@ -16,11 +16,11 @@ namespace BigDataCourse.Areas.Admin.Data
             _context = new DBContext(settings);
         }
 
-        public async Task<IEnumerable<Articles>> GetAll()
+        public async Task<List<Article>> GetAll()
         {
             try
             {
-                List<Articles> lst = await _context.Articles.Find(_ => true)
+                List<Article> lst = await _context.Articles.Find(_ => true)
                     .ToListAsync();
                 
                 return lst;
@@ -31,7 +31,7 @@ namespace BigDataCourse.Areas.Admin.Data
                 throw ex;
             }
         }
-        public async Task<Articles> Create(Articles item)
+        public async Task<Article> Create(Article item)
         {
             try
             {
