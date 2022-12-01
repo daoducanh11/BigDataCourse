@@ -322,3 +322,14 @@ ul#ui-id-1 {
     border: none;
     color: #2ea1f8;
 }
+
+.tag {
+    background-color: lightgray;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.div-tag {
+    display: inline-block;
+    margin-right: 10px;
+}

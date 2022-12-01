@@ -34,8 +34,9 @@ namespace BigDataCourse.Areas.Admin.Controllers
             if (res != null)
             {
                 HttpContext.Session.SetString("_user", JsonSerializer.Serialize(res));
-                return RedirectToAction("Index", "News");
-            }    
+                return RedirectToAction("Index", "Article");
+            }
+            ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng!");
             return View(ad);
         }
 

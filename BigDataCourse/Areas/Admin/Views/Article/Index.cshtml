@@ -1,0 +1,103 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<BigDataCourse.Areas.Admin.Models.Article>
+
+@{
+    ViewBag.Title = "Bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Danh sách bài viết</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid card card-outline card-info">
+        <div class="form-search">
+            @using (Html.BeginForm("Index", "Article", FormMethod.Get, new { }))
+            {
+                <div class="row" style="align-items: center;">
+                    <div class="col-1">
+                        <span>Tên bài viết</span>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" name="name" value="@ViewBag.name" placeholder="Nhập từ khóa tìm kiếm">
+                    </div>
+
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-default btn-pro" title="Tìm kiếm" style="background-color: #2ea1f8; flex: auto; width: 100%;">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-1">
+                        <a href="~/Admin/Article" class="btn btn-default btn-pro" title="Làm mới" style="background-color: #34a544; width: 100%;">
+                            <i class="fas fa-sync-alt"></i>
+                        </a>
+                    </div>
+                    <div class="col-1">
+                        
+                    </div>
+                    <div class="col-2">
+                        <a class="create-new" href="~/Admin/Article/Create">
+                            <i class="fas fa-plus"></i>
+                            Thêm mới
+                        </a>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 60px;">STT</th>
+                    <th class="text-center">Tên bài viết</th>
+                    <th class="text-center">Ảnh bìa</th>
+                    <th class="text-center">Thẻ</th>
+                    <th class="text-center" style="width: 130px;">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Select((value, i) => new { i, value }))
+                {
+                    <tr>
+                        <td class="text-center">
+                            @(ViewBag.pageOffset + item.i + 1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.value.Name)
+                        </td>
+                        <td class="text-center">
+                            <img src="~/Uploads/@item.value.Image" />
+                        </td>
+                        <td>
+                            @foreach (var tag in item.value.Tags)
+                            {
+                                <span class="tag">@tag.Name</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a href="~/Admin/Article/Update/@item.value._id" title="Sửa">
+                                <i class="fas fa-edit" aria-hidden="true"></i>
+                            </a>
+                            <a href="~/Admin/Article/Delete/@item.value._id" title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @name = @ViewBag.name }))
+            </div>
+        </div>
+    </div>
+</section>

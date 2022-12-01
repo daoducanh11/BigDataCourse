@@ -48,6 +48,22 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<int> GetNewId()
+        {
+            try
+            {
+                List<Article> lst = await _context.Articles.Find(_ => true)
+                    .SortByDescending(item => item.ArticleID)
+                    .Limit(1)
+                    .ToListAsync();
+                return lst[0].ArticleID + 1;
+            }
+            catch (Exception ex)
+            {
+                return 1;
+            }
+        }
+
         public async Task<Article> Create(Article item)
         {
             try

@@ -569,4 +569,8 @@
     <None Include="wwwroot\Template\vendorLogin\tilt\tilt.jquery.min.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
 </Project>

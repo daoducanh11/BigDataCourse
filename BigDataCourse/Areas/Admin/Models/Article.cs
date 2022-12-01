@@ -11,9 +11,17 @@ namespace BigDataCourse.Areas.Admin.Models
         public int ArticleID { get; set; }
 
         public string Name { get; set; }
+        public string Image { get; set; }
+        public string Content { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public bool IsDeleted { get; set; }
 
         public List<Tag> Tags { get; set; }
 
+        public Article()
+        {
+            
+        }
         public Article(int id, string name, List<Tag> tags)
         {
             ArticleID = id;
