@@ -4,12 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BigDataCourse</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BigDataCourse.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BigDataCourse.styles.css" asp-append-version="true" />*@
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/li-scroller.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/TemplateNews/assets/css/style.css">
 </head>
 <body>
-    <header>
+    @*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BigDataCourse</a>
@@ -40,10 +48,175 @@
         <div class="container">
             &copy; 2022 - BigDataCourse - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </footer>*@
+
+
+    <div id="preloader">
+    <div id="status">&nbsp;</div>
+  </div>
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+  <div class="container">
+    <div class="box_wrapper">
+      <header id="header">
+        <div class="header_top">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav custom_nav">
+                  <li><a href="index.html">Trang chủ</a></li>
+                  <li><a href="#">Video</a></li>
+                  <li><a href="pages/category-archive.html">Yêu thích</a></li>
+                  <li><a href="#">Liên hệ</a></li>
+                  <!-- <li><a href="pages/404.html">404 Page</a></li> -->
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="header_search">
+            <button id="searchIcon"><i class="fa fa-search"></i></button>
+            <div id="shide">
+              <div id="search-hide">
+                <form action="#">
+                  <input type="text" size="40" placeholder="Nhập tên bài viết ...">
+                </form>
+                <button class="remove"><span><i class="fa fa-times"></i></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header_bottom">
+          <div class="logo_area"><a class="logo" href="#"><b>B</b>igData Course<span>Công nghệ dữ liệu 17</span></a>
+          </div>
+          <div class="top_addarea"><a href="#"><img src="~/TemplateNews/images/addbanner_728x90_V1.jpg" alt=""></a></div>
+        </div>
+      </header>
+      <div class="latest_newsarea"> <span>Tag</span>
+        <ul id="ticker01" class="news_sticker">
+          <li><a href="#">My First News Item</a></li>
+          <li><a href="#">My Second News Item</a></li>
+          <li><a href="#">My Third News Item</a></li>
+          <li><a href="#">My Four News Item</a></li>
+          <li><a href="#">My Five News Item</a></li>
+          <li><a href="#">My Six News Item</a></li>
+          <li><a href="#">My Seven News Item</a></li>
+          <li><a href="#">My Eight News Item</a></li>
+          <li><a href="#">My Nine News Item</a></li>
+        </ul>
+      </div>
+            @RenderBody()
+      <footer id="footer">
+        <div class="footer_top">
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="single_footer_top wow fadeInLeft">
+              <h2>Follow By Email</h2>
+              <div class="subscribe_area">
+                <!-- <p>"Subscribe here to get our newsletter, it is safe just Put your Email and click subscribe"</p> -->
+                <form action="#">
+                  <div class="subscribe_mail">
+                    <input class="form-control" type="email" placeholder="Địa chỉ email">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <input class="submit_btn" type="submit" value="Gửi">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="single_footer_top wow fadeInLeft">
+              <h2>Bài viết phổ biến</h2>
+              <ul class="catg3_snav ppost_nav">
+                <li>
+                  <div class="media"> <a class="media-left" href="pages/single_page.html"> <img src="~/TemplateNews/images/70x70.jpg"
+                        alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="pages/single_page.html"> Aliquam malesuada diam
+                        eget turpis varius</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="media"> <a class="media-left" href="pages/single_page.html"> <img src="~/TemplateNews/images/70x70.jpg"
+                        alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
+                        varius</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
+                        varius</a></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="single_footer_top wow fadeInRight">
+              <h2>Thẻ</h2>
+              <ul class="footer_labels">
+                <li><a href="#">Comedy</a></li>
+                <li><a href="#">Arts</a></li>
+                <li><a href="#">Cinema</a></li>
+                <li><a href="#">Nature</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Tourism</a></li>
+                <li><a href="#">Videos</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="single_footer_top wow fadeInRight">
+              <h2>Liên hệ</h2>
+              <form action="#" class="contact_form">
+                <label>Họ tên</label>
+                <input class="form-control" type="text">
+                <label>Email*</label>
+                <input class="form-control" type="email">
+                <label>Lời nhắn*</label>
+                <textarea class="form-control" cols="30" rows="10"></textarea>
+                <input class="send_btn" type="submit" value="Gửi">
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer_bottom">
+          <div class="footer_bottom_left">
+            <p>Copyright &copy; 2022</p>
+          </div>
+          <div class="footer_bottom_right">
+            <ul>
+              <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Twitter" href="#"><i
+                    class="fa fa-twitter"></i></a></li>
+              <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Facebook" href="#"><i
+                    class="fa fa-facebook"></i></a></li>
+              <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Googel+" href="#"><i
+                    class="fa fa-google-plus"></i></a></li>
+              <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Youtube" href="#"><i
+                    class="fa fa-youtube"></i></a></li>
+              <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Rss" href="#"><i
+                    class="fa fa-rss"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/TemplateNews/assets/js/jquery.min.js"></script>
+    <script src="~/TemplateNews/assets/js/wow.min.js"></script>
+    <script src="~/TemplateNews/assets/js/bootstrap.min.js"></script>
+    <script src="~/TemplateNews/assets/js/slick.min.js"></script>
+    <script src="~/TemplateNews/assets/js/jquery.li-scroller.1.0.js"></script>
+    <script src="~/TemplateNews/assets/js/custom.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
