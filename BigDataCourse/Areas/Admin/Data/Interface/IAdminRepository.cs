@@ -4,6 +4,6 @@ namespace BigDataCourse.Areas.Admin.Data.Interface
 {
     public interface IAdminRepository
     {
-        Task<Admins> Login(string userName, string password);
+        Task<Models.Admin> Login(string userName, string password);
     }
 }

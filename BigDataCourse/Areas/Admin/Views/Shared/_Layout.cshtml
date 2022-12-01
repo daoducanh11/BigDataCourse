@@ -43,7 +43,7 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/Home" class="nav-link" title="Phòng khám nhi" target="_blank">
                         @*<img src="~/Content/images/logo.png" alt="My Café" class="" style="width: 50px; margin-top: -10px; margin-right: 5px;">*@
-                        <span class="">Phòng khám nhi</span>
+                        <span class="">Big data course</span>
                     </a>
                 </li>
             </ul>
@@ -87,7 +87,7 @@
             <!-- Brand Logo -->
             <a href="/Admin/AdminHome" class="brand-link" title="Trang chủ">
                 <img src="~/Template/dist/img/logo.jpg" alt="AdminWebsite Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Phòng khám nhi</span>
+                <span class="brand-text font-weight-light">Big data course</span>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -96,64 +96,26 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
+                        
                         <li class="nav-item">
-                            <a href="/LeTan/LeTanHome" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Hẹn khám
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/LeTan/LeTanHome/Index" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách hẹn</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/LeTan/LeTanHome/Create" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm lịch hẹn</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LeTan/BenhNhi" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Bệnh nhi
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/LeTan/BenhNhi/Index" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách bênh nhi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/LeTan/BenhNhi/Create" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm bệnh nhi</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LeTan/PhieuKham" class="nav-link">
-                                <i class="nav-icon fas fa-file-invoice"></i>
-                                <p>Phiếu khám bệnh</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LeTan/DichVu" class="nav-link">
+                            <a href="/Admin/Article" class="nav-link">
                                 <i class="nav-icon fas fa-newspaper"></i>
-                                <p>Dịch vụ khám</p>
+                                <p>Bài viết</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/Admin/User" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Độc giả</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Article" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>Thẻ</p>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -170,7 +132,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2021 AdminWebsite</strong>
+            <strong>Copyright &copy; 2022 Anhdd</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0
@@ -236,6 +198,6 @@
 
     </script>
 
-    @RenderSection("script", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

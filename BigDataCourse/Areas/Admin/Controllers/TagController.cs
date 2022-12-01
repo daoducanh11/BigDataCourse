@@ -1,9 +1,11 @@
-﻿using BigDataCourse.Areas.Admin.Data.Interface;
+﻿using BigDataCourse.Areas.Admin.Authorization;
+using BigDataCourse.Areas.Admin.Data.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BigDataCourse.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizationAdmin]
     public class TagController : Controller
     {
         private readonly ITagRepository _tagRepository;
@@ -20,9 +22,22 @@ namespace BigDataCourse.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string tagName)
+        public async Task<IActionResult> Create(string tagName)
         {
+            await _tagRepository.Create(new Models.Tag(tagName));
+            return RedirectToAction("Index", "Tag");
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Update(string tagId, string tagName)
+        {
+            await _tagRepository.Update(tagId, new Models.Tag(tagName));
+            return RedirectToAction("Index", "Tag");
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _tagRepository.Delete(id);
             return RedirectToAction("Index", "Tag");
         }
     }

@@ -316,3 +316,9 @@ ul#ui-id-1 {
     border-radius: 3px;
     color: #fff;
 }
+
+.btn-edit {
+    background: none;
+    border: none;
+    color: #2ea1f8;
+}

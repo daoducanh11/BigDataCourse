@@ -9,6 +9,7 @@ namespace BigDataCourse.Areas.Admin.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId _id { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Tag(string name)
         {

@@ -73,10 +73,10 @@
                         </td>
 
                         <td class="text-center">
-                            <a href="~/LeTan/BenhNhi/Edit/@item.value._id" title="Sửa">
+                            <button type="button" class="btn-edit" data-toggle="modal" data-target="#exampleModalUpdate" onclick="bindingValue('@item.value._id', '@item.value.Name')">
                                 <i class="fas fa-edit" aria-hidden="true"></i>
-                            </a>
-                            <a href="~/LeTan/BenhNhi/Delete/@item.value._id" title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                            </button>
+                            <a href="~/Admin/Tag/Delete/@item.value._id" title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
                                 <i class="fas fa-trash-alt" style="color:red;"></i>
                             </a>
                         </td>
@@ -91,6 +91,7 @@
         </div>
     </div>
 
+    @*Modal*@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -113,11 +114,52 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
                     <button type="submit" class="btn btn-primary">Thêm</button>
                 </div>
                 }
             </div>
         </div>
     </div>
+
+    @*Modal*@
+    <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                @using (Html.BeginForm("Update", "Tag", FormMethod.Post, new { }))
+                {
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thông tin thẻ</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="align-items: center;">
+                            <div class="col-1">
+                                <span>Tên thẻ</span>
+                            </div>
+                            <div class="col-11">
+                                <input type="hidden" id="tagId" name="tagId">
+                                <input type="text" class="form-control" id="tagName" name="tagName" placeholder="Nhập từ tên thẻ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </section>
+
+@section scripts{
+    <script>
+        function bindingValue(id, name){
+            $('#tagId').val(id);
+            $('#tagName').val(name);
+        }
+    </script>
+}

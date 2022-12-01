@@ -10,6 +10,7 @@ namespace BigDataCourse.Areas.Admin.Models
         public ObjectId _id { get; set; }
         public int UserID { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
 
         public User(int id, string name)
         {

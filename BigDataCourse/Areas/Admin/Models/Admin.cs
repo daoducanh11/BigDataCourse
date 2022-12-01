@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace BigDataCourse.Areas.Admin.Models
 {
-    public class Admins
+    public class Admin
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BigDataCourse.Areas.Admin.Controllers
@@ -27,11 +28,20 @@ namespace BigDataCourse.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(Admins ad)
+        public async Task<IActionResult> Index(Models.Admin ad)
         {
-            if (await _adminRepository.Login(ad.UserName, ad.Password) != null)
+            Models.Admin res = await _adminRepository.Login(ad.UserName, ad.Password);
+            if (res != null)
+            {
+                HttpContext.Session.SetString("_user", JsonSerializer.Serialize(res));
                 return RedirectToAction("Index", "News");
+            }    
             return View(ad);
+        }
+
+        public IActionResult Loguot()
+        {
+            return RedirectToAction("Index", "Login");
         }
 
         //public async Task<IActionResult> Add()

@@ -14,11 +14,11 @@ namespace BigDataCourse.Areas.Admin.Models.Settings
                 _database = client.GetDatabase(settings.Value.Database);
         }
 
-        public IMongoCollection<Admins> Admins
+        public IMongoCollection<Admin> Admins
         {
             get
             {
-                return _database.GetCollection<Admins>("Admin");
+                return _database.GetCollection<Admin>("Admin");
             }
         }
         public IMongoCollection<Categories> Categories
