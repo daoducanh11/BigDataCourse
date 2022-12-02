@@ -1,0 +1,78 @@
+﻿@model BigDataCourse.Areas.Admin.Models.User
+
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<section style="padding: 40px 270px;border-top: 2px solid #09c;margin: auto;">
+    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @id = "frm-res" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <h3>Đăng ký</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <label>Tên đăng nhập:</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @type = "text", @placeholder = "Tên đăng nhập", @required = "required" })
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <label>Email:</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @type = "email", @placeholder = "Email", @required = "required" })
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <label>Số điện thoại:</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @type = "number", @placeholder = "Số điện thoại", @required = "required" })
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <label>Mật khẩu:</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", @required = "required" })
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <label>Nhập lại mật khẩu:</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <input class="form-control" type="password" name="repassword" required />
+                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger login-faile" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <button class="submit_btn" type="submit" style="width: 170px;
+            margin: 14px;">
+                    Đăng ký
+                </button>
+                <p>Bạn đã có tài khoản? <ahref ="/User/Login">Đăng nhập ngay</ahref></p>
+            </div>
+        </div>
+    }
+</section>
+
+<script>
+    document.getElementById("frm-res").onsubmit = function () {
+        var x = document.forms["frm-res"]["Password"].value;
+        var y = document.forms["frm-res"]["repassword"].value;
+        if (x != y) {
+            alert("Xác nhận mật khẩu chưa chính xác!", "error");
+            return false;
+        }
+    }
+</script>

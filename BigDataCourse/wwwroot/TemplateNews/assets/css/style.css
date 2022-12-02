@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @font-face{font-family:"Open Sans"; font-style:normal; font-weight:400; src:local("Open Sans"),local("OpenSans"),url("../fonts/OpenSans-400.woff") format("woff")}
 @font-face{font-family:"Varela"; font-style:normal; font-weight:400; src:local("Varela"),url("../fonts/Varela-400.woff") format("woff")}
 
-body{background-image:url("images/pattern-bg.png"); background-repeat:repeat; color:#444; overflow-x:hidden !important}
+body{background-repeat:repeat; color:#444; overflow-x:hidden !important}
 ul{padding:0; margin:0; list-style:none}
 a{text-decoration:none}
 a:hover{color:#646464}
@@ -51,8 +51,8 @@ a.logo b{color:#09c}
 .top_addarea a > img{width:100%}
 .scrollToTop{bottom:105px; display:none; font-size:32px; font-weight:bold; height:50px; position:fixed; right:75px; text-align:center; text-decoration:none; width:50px; z-index:9999; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .scrollToTop:hover, .scrollToTop:focus{text-decoration:none; outline:none}
-.latest_newsarea{display:inline; float:left; width:100%; background-color:#1b1a1a}
-.news_sticker li a{display:inline-block; color:#eee; margin-right:40px}
+.latest_newsarea{display:inline; float:left; width:100%;}
+.news_sticker li a{display:inline-block; color:#000; margin-right:40px}
 .latest_newsarea span{display:block; float:left; font-size:16px; padding:5px 25px; position:absolute; z-index:20}
 .news_sticker{float:right; width:85%; padding:5px 15px 5px 5px}
 .news_sticker li a:before{content:""; margin-right:5px}
@@ -67,7 +67,21 @@ a.logo b{color:#09c}
 .signle_iteam img{width:100%; height:100%; transform:translate3d(0px,0px,0px); -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .signle_iteam:hover img{-webkit-transform:scale(1.1); -moz-transform:scale(1.1); -ms-transform:scale(1.1); -o-transform:scale(1.1); transform:scale(1.1)}
 .owl-carousel .signle_iteam:last-child img{width:100% !important}
-.slider_tittle{bottom:15px; color:#fff; font-size:20px; left:0; line-height:23px; margin:0 20px; padding:20px 0; position:absolute; right:0; text-align:center; width:auto; z-index:5}
+.slider_tittle {
+    bottom: 0px;
+    color: #fff;
+    font-size: 14px;
+    left: 0;
+    line-height: 23px;
+    margin: 0 5px;
+    padding: 10px 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: auto;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.5);
+}
 .slider_tittle:hover, .slider_tittle:focus{color:#fff}
 #contentbody{background-color:#eee; display:inline; float:left; min-height:500px; padding:0 30px; width:100%; padding-top:10px}
 .left_bar{float:left; display:inline; width:93%; min-height:400px}
@@ -242,4 +256,37 @@ a.logo b{color:#09c}
 .login-faile {
     padding: 7px;
     margin-top: 6px;
+}
+
+.btn-search {
+    position: absolute;
+    background-color: #fff;
+    border: none;
+    font-size: 19px;
+    top: 5px;
+    color: #0099cc;
+}
+
+.signle_iteam img {
+    height: 300px;
+}
+
+.carousel-caption {
+    right: 1px;
+    left: 1px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.carousel-caption h1{
+    margin: 0;
+}
+
+.carousel-caption {
+    bottom: 3px;
+}
+
+.carousel-inner > .item > img{
+    min-height: 400px;
 }

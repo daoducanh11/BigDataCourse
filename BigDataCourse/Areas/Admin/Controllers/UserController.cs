@@ -17,11 +17,16 @@ namespace BigDataCourse.Areas.Admin.Controllers
             _userActionRepository = userActionRepository;
         }
 
-        public async Task<IActionResult> Index(string name = "", int page = 1, int pageSize = 10)
+        public async Task<IActionResult> Index(string name = "", string phoneNumber = "", int page = 1, int pageSize = 10)
         {
             ViewBag.pageOffset = (page - 1) * pageSize;
+            if (name == null)
+                name = "";
+            if (phoneNumber == null)
+                phoneNumber = "";
             ViewBag.name = name;
-            return View(await _userRepository.Get(name, page, pageSize));
+            ViewBag.phoneNumber = phoneNumber;
+            return View(await _userRepository.Get(name, phoneNumber, page, pageSize));
         }
 
         public async Task<IActionResult> ActionHistory(int id, string uAction = "", int page = 1, int pageSize = 20)

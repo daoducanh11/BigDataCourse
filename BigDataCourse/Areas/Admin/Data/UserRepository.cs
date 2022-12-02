@@ -48,11 +48,11 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
-        public async Task<IEnumerable<User>> Get(string name, int page, int pageSize)
+        public async Task<IEnumerable<User>> Get(string name, string phoneNumber, int page, int pageSize)
         {
             try
             {
-                List<User> lst = await _context.Users.Find(item => item.Name.Contains(name))
+                List<User> lst = await _context.Users.Find(item => item.Name.Contains(name) && item.PhoneNumber.Contains(phoneNumber) && !item.IsDeleted)
                     .ToListAsync();
                 return lst.ToPagedList<User>(page, pageSize);
             }

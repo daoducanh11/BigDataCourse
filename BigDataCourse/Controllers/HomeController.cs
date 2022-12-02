@@ -22,21 +22,27 @@ namespace BigDataCourse.Controllers
             _userActionRepository = userActionRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string keyword = "")
         {
+            ViewBag.keyword = keyword;
             ViewBag.listTag = await _tagRepository.GetAll();
-            ViewBag.slide1 = await _articleRepository.Get("", 1, 5);
-            ViewBag.slide2 = await _articleRepository.Get("", 2, 5);
-            ViewBag.recent = await _articleRepository.Get("", 3, 5);
-            ViewBag.popular = await _articleRepository.Get("", 3, 10);
-            return View(await _articleRepository.Get("", 4, 12));
+            ViewBag.slide1 = await _articleRepository.Get(keyword, 1, 5);
+            ViewBag.slide2 = await _articleRepository.Get(keyword, 2, 5);
+            ViewBag.recent = await _articleRepository.Get(keyword, 3, 5);
+            ViewBag.popular = await _articleRepository.Get(keyword, 3, 10);
+            return View(await _articleRepository.Get(keyword, 4, 12));
         }
 
         public async Task<IActionResult> Detail(int id)
         {
-            User u = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("_user"));
-            //UserAction ua = new UserAction()
-            return View();
+            Article a = await _articleRepository.GetByArticleId(id);
+            if (HttpContext.Session.GetString("_user") != null)
+            {
+                User u = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("_user"));
+                UserAction ua = new UserAction(DateTime.Now.Day, "View", u.UserID, u.Name, a.ArticleID, a.Name);
+                ua.CreatedAt = DateTime.Now;
+            }
+            return View(a);
         }
 
         public async Task<IActionResult> Interactive(string value)

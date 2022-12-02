@@ -16,7 +16,7 @@
         @foreach (var item in ViewBag.slide1)
         {
             <div class="signle_iteam">
-                <img src="~/TemplateNews/images/395x396.jpg" alt="">
+                <img src="~/Uploads/@item.Image" alt="@item.Name">
                 <div class="sing_commentbox slider_comntbox">
                     <p><i class="fa fa-calendar"></i>@item.CreatedDate</p>
                 </div>
@@ -37,7 +37,7 @@
                                 @foreach (var item in ViewBag.recent)
                                 {
                                     <li>
-                                        <a href="pages/single_page.html"><img src="~/TemplateNews/images/150x80.jpg" alt="@item.Name"></a> <a class="recent_title" href="pages/single_page.html">
+                                        <a href="pages/single_page.html"><img src="~/Uploads/@item.Image" alt="@item.Name"></a> <a class="recent_title" href="pages/single_page.html">
                                             @item.Name
                                         </a>
                                     </li>
@@ -64,26 +64,21 @@
                       <li data-target="#myCarousel" data-slide-to="3"></li>
                     </ol>*@
                     <div class="carousel-inner" role="listbox">
-                      <div class="item active"> <img src="~/TemplateNews/images/668x328.jpg" alt="">
-                        <div class="carousel-caption">
-                          <h1><a href="#"> Aliquam malesuada diam eget turpis varius 1</a></h1>
-                        </div>
-                      </div>
-                      <div class="item"> <img src="~/TemplateNews/images/668x328.jpg" alt="">
-                        <div class="carousel-caption">
-                          <h1><a href="#"> Aliquam malesuada diam eget turpis varius 2</a></h1>
-                        </div>
-                      </div>
-                      <div class="item"> <img src="~/TemplateNews/images/668x328.jpg" alt="">
-                        <div class="carousel-caption">
-                          <h1><a href="#"> Aliquam malesuada diam eget turpis varius 3</a></h1>
-                        </div>
-                      </div>
-                      <div class="item"> <img src="~/TemplateNews/images/668x328.jpg" alt="">
-                        <div class="carousel-caption">
-                          <h1><a href="#"> Aliquam malesuada diam eget turpis varius 4</a></h1>
-                        </div>
-                      </div>
+                        <div class="item active">
+                                        <img src="~/Uploads/@ViewBag.slide2[0].Image" alt="@ViewBag.slide2[0].Name">
+                                        <div class="carousel-caption">
+                                            <h1><a href="#">@ViewBag.slide2[0].Name</a></h1>
+                                        </div>
+                                    </div>
+                                @for (var i = 1; i < ViewBag.slide2.Count; i++)
+                                {
+                            <div class="item">
+                                        <img src="~/Uploads/@ViewBag.slide2[i].Image" alt="@ViewBag.slide2[i].Name">
+                                        <div class="carousel-caption">
+                                            <h1><a href="#">@ViewBag.slide2[i].Name</a></h1>
+                                        </div>
+                                    </div>
+                        }
                     </div>
                     <a class="left left_slide" href="#myCarousel" role="button" data-slide="prev"> <span
                         class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a> <a

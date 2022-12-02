@@ -49,16 +49,17 @@ namespace BigDataCourse.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(User u)
         {
-            if(await _userRepository.IsExitPhonenumber(u.PhoneNumber))
-            {
-                ModelState.AddModelError("", "Số điện thoại này đã được đăng ký!");
-                return View();
-            }
             if (await _userRepository.IsExitEmail(u.Email))
             {
                 ModelState.AddModelError("", "Email này đã được đăng ký!");
                 return View();
             }
+            if (await _userRepository.IsExitPhonenumber(u.PhoneNumber))
+            {
+                ModelState.AddModelError("", "Số điện thoại này đã được đăng ký!");
+                return View();
+            }
+            
             u.UserID = await _userRepository.GetNewId();
             await _userRepository.Create(u);
             return RedirectToAction("Login", "User");

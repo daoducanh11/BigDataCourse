@@ -79,7 +79,7 @@ namespace BigDataCourse.Areas.Admin.Controllers
             return View(await _articleRepository.GetById(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Update(List<IFormFile> photo, IFormCollection data)
+        public async Task<IActionResult> Update(string id, List<IFormFile> photo, IFormCollection data)
         {
             Article a = new Article();
             a.Name = data["Name"];
@@ -103,7 +103,7 @@ namespace BigDataCourse.Areas.Admin.Controllers
             }
             a.CreatedDate = DateTime.Now;
             a.ArticleID = await _articleRepository.GetNewId();
-            await _articleRepository.Create(a);
+            await _articleRepository.Update(id, a);
             return RedirectToAction("Index", "Article");
         }
 

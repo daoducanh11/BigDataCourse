@@ -68,9 +68,8 @@
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav custom_nav">
-                  <li><a href="index.html">Trang chủ</a></li>
-                  <li><a href="#">Video</a></li>
-                  <li><a href="pages/category-archive.html">Yêu thích</a></li>
+                  <li><a href="/">Trang chủ</a></li>
+                  <li><a href="/Recommend">Yêu thích</a></li>
                   <li><a href="#">Liên hệ</a></li>
                   @if(Context.Session.GetString("_user") != null)
                   {
@@ -88,9 +87,11 @@
             <button id="searchIcon"><i class="fa fa-search"></i></button>
             <div id="shide">
               <div id="search-hide">
-                <form action="#">
-                  <input type="text" size="40" placeholder="Nhập tên bài viết ...">
-                </form>
+                     @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { }))
+            {
+                                    <input name="keyword" type="text" value="@ViewBag.keyword" size="40" placeholder="Nhập tên bài viết ...">
+                                    <button class="btn-search" title="Tìm" type="submit"><i class="fa fa-search"></i></button>
+            }
                 <button class="remove"><span><i class="fa fa-times"></i></span></button>
               </div>
             </div>
@@ -105,21 +106,6 @@
             @RenderBody()
       <footer id="footer">
         <div class="footer_top">
-          @*<div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="single_footer_top wow fadeInLeft">
-              <h2>Follow By Email</h2>
-              <div class="subscribe_area">
-                <!-- <p>"Subscribe here to get our newsletter, it is safe just Put your Email and click subscribe"</p> -->
-                <form action="#">
-                  <div class="subscribe_mail">
-                    <input class="form-control" type="email" placeholder="Địa chỉ email">
-                    <i class="fa fa-envelope"></i>
-                  </div>
-                  <input class="submit_btn" type="submit" value="Gửi">
-                </form>
-              </div>
-            </div>
-          </div>*@
           <div class="col-lg-7 col-md-7 col-sm-7">
             <div class="single_footer_top wow fadeInLeft">
               <h2>Về chúng tôi</h2>

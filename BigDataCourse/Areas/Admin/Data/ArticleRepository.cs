@@ -81,6 +81,22 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<Article> GetByArticleId(int id)
+        {
+            try
+            {
+                Article a = await _context.Articles
+                                .Find(a => a.ArticleID == id)
+                                .FirstOrDefaultAsync();
+                return a;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<Article> Create(Article item)
         {
             try
