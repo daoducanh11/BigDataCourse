@@ -21,13 +21,7 @@ namespace BigDataCourse.Areas.Admin.Models.Settings
                 return _database.GetCollection<Admin>("Admin");
             }
         }
-        public IMongoCollection<Categories> Categories
-        {
-            get
-            {
-                return _database.GetCollection<Categories>("Category");
-            }
-        }
+        
         public IMongoCollection<UserAction> UserActions
         {
             get

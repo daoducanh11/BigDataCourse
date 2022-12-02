@@ -14,6 +14,7 @@ namespace BigDataCourse.Areas.Admin.Models
         public string UserName { get; set; }
         public int ArticleID { get; set; }
         public string ArticleName { get; set; }
+        public DateTime CreatedAt { get; set; }
         public UserAction(int day, string action, int userid, string username, int articleid, string articlename)
         {
             Day = day;

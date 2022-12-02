@@ -3,6 +3,7 @@ using BigDataCourse.Areas.Admin.Models;
 using BigDataCourse.Areas.Admin.Models.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using X.PagedList;
 
 namespace BigDataCourse.Areas.Admin.Data
 {
@@ -30,6 +31,37 @@ namespace BigDataCourse.Areas.Admin.Data
                 throw ex;
             }
         }
+
+        public async Task<IEnumerable<UserAction>> GetByUserID(int id, string action, int page, int pageSize)
+        {
+            try
+            {
+                List<UserAction> lst = await _context.UserActions.Find(item => item.UserID.Equals(id) && item.Action.Contains(action))
+                    .ToListAsync();
+                return lst.ToPagedList<UserAction>(page, pageSize);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<UserAction>> GetByArticleID(int id, string action, int page, int pageSize)
+        {
+            try
+            {
+                List<UserAction> lst = await _context.UserActions.Find(item => item.ArticleID.Equals(id) && item.Action.Contains(action))
+                    .ToListAsync();
+                return lst.ToPagedList<UserAction>(page, pageSize);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<UserAction> Create(UserAction item)
         {
             try

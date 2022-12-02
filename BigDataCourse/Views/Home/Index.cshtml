@@ -1,51 +1,28 @@
-﻿@{
+﻿@model X.PagedList.IPagedList<BigDataCourse.Areas.Admin.Models.Article>
+@{
     ViewData["Title"] = "Trang chủ";
 }
-
+<div class="latest_newsarea">
+    <span>Tag</span>
+    <ul id="ticker01" class="news_sticker">
+        @foreach (var item in ViewBag.listTag)
+        {
+            <li><a href="#">@item.Name</a></li>
+        }
+    </ul>
+</div>
  <div class="thumbnail_slider_area">
         <div class="owl-carousel">
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
+        @foreach (var item in ViewBag.slide1)
+        {
+            <div class="signle_iteam">
+                <img src="~/TemplateNews/images/395x396.jpg" alt="">
+                <div class="sing_commentbox slider_comntbox">
+                    <p><i class="fa fa-calendar"></i>@item.CreatedDate</p>
+                </div>
+                <a class="slider_tittle" href="#">@item.Name</a>
             </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-            </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-            </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-            </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-            </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
-          <div class="signle_iteam"> <img src="~/TemplateNews/images/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-            </div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-          </div>
+        } 
         </div>
       </div>
       <section id="contentbody">
@@ -54,23 +31,22 @@
             <div class="row">
               <div class="left_bar">
                 <div class="single_leftbar">
-                  <h2><span>Recent Post</span></h2>
+                  <h2><span>Gần đây</span></h2>
                   <div class="singleleft_inner">
                     <ul class="recentpost_nav wow fadeInDown">
-                      <li><a href="pages/single_page.html"><img src="~/TemplateNews/images/150x80.jpg" alt=""></a> <a
-                          class="recent_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                          ante</a></li>
-                      <li><a href="pages/single_page.html"><img src="~/TemplateNews/images/150x80.jpg" alt=""></a> <a
-                          class="recent_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                          ante</a></li>
-                      <li><a href="pages/single_page.html"><img src="~/TemplateNews/images/150x80.jpg" alt=""></a> <a
-                          class="recent_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                          ante</a></li>
+                                @foreach (var item in ViewBag.recent)
+                                {
+                                    <li>
+                                        <a href="pages/single_page.html"><img src="~/TemplateNews/images/150x80.jpg" alt="@item.Name"></a> <a class="recent_title" href="pages/single_page.html">
+                                            @item.Name
+                                        </a>
+                                    </li>
+                                }
                     </ul>
                   </div>
                 </div>
                 <div class="single_leftbar wow fadeInDown">
-                  <h2><span>Side Add</span></h2>
+                  <h2><span>Quảng cáo</span></h2>
                   <div class="singleleft_inner"> <a href="#"><img src="~/TemplateNews/images/150x600.jpg" alt=""></a></div>
                 </div>
               </div>
@@ -81,12 +57,12 @@
               <div class="middle_bar">
                 <div class="featured_sliderarea">
                   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
+                    @*<ol class="carousel-indicators">
                       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                       <li data-target="#myCarousel" data-slide-to="1"></li>
                       <li data-target="#myCarousel" data-slide-to="2"></li>
                       <li data-target="#myCarousel" data-slide-to="3"></li>
-                    </ol>
+                    </ol>*@
                     <div class="carousel-inner" role="listbox">
                       <div class="item active"> <img src="~/TemplateNews/images/668x328.jpg" alt="">
                         <div class="carousel-caption">
@@ -116,52 +92,29 @@
                   </div>
                 </div>
                 <div class="single_category wow fadeInDown">
-                  <div class="category_title"> <a href="pages/category-archive.html">Category 1</a></div>
+                  @*<div class="category_title"> <a href="pages/category-archive.html">Category 1</a></div>*@
                   <div class="single_category_inner">
                     <ul class="catg_nav">
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="pages/single_page.html"> <img
-                              src="~/TemplateNews/images/310x150.jpg" alt=""> </a></div>
-                        <a class="catg_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                          ante</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="pages/single_page.html"> <img
-                              src="~/TemplateNews/images/310x150.jpg" alt=""> </a></div>
-                        <a class="catg_title" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit
-                          amet</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="pages/single_page.html"> <img
-                              src="~/TemplateNews/images/310x150.jpg" alt=""> </a></div>
-                        <a class="catg_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                          ante</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="pages/single_page.html"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="#"> <img src="~/TemplateNews/images/310x150.jpg"
-                              alt=""> </a></div>
-                        <a class="catg_title" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                      </li>
+                        @foreach (var item in Model)
+                        {
+                                    <li>
+                                        <div class="catgimg_container">
+                                            <a class="catg1_img" href="pages/single_page.html">
+                                                <img src="~/TemplateNews/images/310x150.jpg" alt="@item.Name">
+                                            </a>
+                                        </div>
+                                        <a class="catg_title" href="pages/single_page.html">
+                                            @item.Name
+                                        </a>
+                                        <div class="sing_commentbox">
+                                            <p><i class="fa fa-calendar"></i>@item.CreatedDate </p>
+                                        </div>
+                                    </li>
+                                }
                     </ul>
                   </div>
                 </div>
-                <div class="single_category  wow fadeInDown">
+                @*<div class="single_category  wow fadeInDown">
                   <div class="category_title"> <a href="pages/category-archive.html">Category 2</a></div>
                   <div class="single_category_inner">
                     <ul class="catg_nav catg_nav2">
@@ -411,7 +364,7 @@
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div>*@
               </div>
             </div>
           </div>
@@ -419,80 +372,33 @@
             <div class="row">
               <div class="right_bar">
                 <div class="single_leftbar wow fadeInDown">
-                  <h2><span>Popular Post</span></h2>
+                  <h2><span>Phổ biến</span></h2>
                   <div class="singleleft_inner">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
-                      <li>
-                        <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt=""
-                              src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam
-                              malesuada diam eget turpis varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt=""
-                              src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt=""
-                              src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a></div>
-                        </div>
-                      </li>
+                                @foreach (var item in ViewBag.popular)
+                                {
+                                    <li>
+                                        <div class="media">
+                                            <a href="pages/single_page.html" class="media-left">
+                                                <img alt="@item.Name"
+                                                 src="~/TemplateNews/images/70x70.jpg">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="pages/single_page.html" class="catg_title">
+                                                    @item.Name
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
                     </ul>
                   </div>
                 </div>
                 <div class="single_leftbar wow fadeInDown">
-                  <h2><span>Side Ad</span></h2>
+                  <h2><span>Quảng cáo</span></h2>
                   <div class="singleleft_inner"> <a href="#"><img alt="" src="~/TemplateNews/images/262x218.jpg"></a></div>
                 </div>
-                <div class="single_leftbar wow fadeInDown">
+                @*<div class="single_leftbar wow fadeInDown">
                   <ul class="nav nav-tabs custom-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
                         data-toggle="tab">Most Popular</a></li>
@@ -642,19 +548,16 @@
                       </form>
                     </div>
                   </div>
-                </div>
+                </div>*@
                 <div class="single_leftbar wow fadeInDown">
-                  <h2><span>Labels</span></h2>
+                  <h2><span>Tag</span></h2>
                   <div class="singleleft_inner">
-                    <ul class="label_nav">
-                      <li><a href="#">Arts</a></li>
-                      <li><a href="#">Cinema</a></li>
-                      <li><a href="#">Comedy</a></li>
-                      <li><a href="#">Sports</a></li>
-                      <li><a href="#">Tourism</a></li>
-                      <li><a href="#">Videos</a></li>
-                      <li><a href="#">Nature</a></li>
-                    </ul>
+                            <ul class="footer_labels">
+                                @foreach (var item in ViewBag.listTag)
+                                {
+                                    <li><a href="#">@item.Name</a></li>
+                                }
+            </ul>
                   </div>
                 </div>
                 

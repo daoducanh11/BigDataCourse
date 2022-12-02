@@ -1,5 +1,4 @@
 ﻿using BigDataCourse.Areas.Admin.Models.Settings;
-using BigDataCourse.Areas.Admin.Models;
 using BigDataCourse.Areas.Admin.Data.Interface;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;

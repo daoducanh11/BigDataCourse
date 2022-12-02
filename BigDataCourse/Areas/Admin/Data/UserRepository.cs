@@ -17,6 +17,21 @@ namespace BigDataCourse.Areas.Admin.Data
             _context = new DBContext(settings);
         }
 
+        public async Task<User> Login(string userName, string password)
+        {
+            try
+            {
+                User u = await _context.Users
+                                .Find(ad => ad.Name == userName && ad.Password == password && !ad.IsDeleted)
+                                .FirstOrDefaultAsync();
+                return u;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public async Task<List<User>> GetAll()
         {
             try
@@ -48,6 +63,22 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<int> GetNewId()
+        {
+            try
+            {
+                List<User> lst = await _context.Users.Find(_ => true)
+                    .SortByDescending(item => item.UserID)
+                    .Limit(1)
+                    .ToListAsync();
+                return lst[0].UserID + 1;
+            }
+            catch (Exception ex)
+            {
+                return 1;
+            }
+        }
+
         public async Task<User> Create(User item)
         {
             try
@@ -67,7 +98,10 @@ namespace BigDataCourse.Areas.Admin.Data
             ObjectId internalId = GetInternalId(id);
             var filter = Builders<User>.Filter.Eq(s => s._id, internalId);
             var update = Builders<User>.Update
-                            .Set(s => s.Name, item.Name);
+                            .Set(s => s.Name, item.Name)
+                            .Set(s => s.Password, item.Password)
+                            .Set(s => s.Email, item.Email)
+                            .Set(s => s.PhoneNumber, item.PhoneNumber);
             try
             {
                 UpdateResult actionResult = await _context.Users.UpdateOneAsync(filter, update);
@@ -81,6 +115,7 @@ namespace BigDataCourse.Areas.Admin.Data
                 throw ex;
             }
         }
+
         public async Task<bool> Delete(string id)
         {
             ObjectId internalId = GetInternalId(id);
@@ -98,6 +133,42 @@ namespace BigDataCourse.Areas.Admin.Data
                 // log or manage the exception
                 throw ex;
             }
+        }
+
+        public async Task<bool> IsExitPhonenumber(string phoneNumber)
+        {
+            try
+            {
+                User u = await _context.Users
+                                .Find(u => u.PhoneNumber == phoneNumber)
+                                .FirstOrDefaultAsync();
+                if(u != null)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+            return false;
+        }
+
+        public async Task<bool> IsExitEmail(string email)
+        {
+            try
+            {
+                User u = await _context.Users
+                                .Find(u => u.Email == email)
+                                .FirstOrDefaultAsync();
+                if (u != null)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+            return false;
         }
 
         // Try to convert the Id to a BSonId value

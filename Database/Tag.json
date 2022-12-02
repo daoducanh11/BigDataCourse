@@ -1,0 +1,181 @@
+[{
+  "_id": {
+    "$oid": "6389769183546584963055c6"
+  },
+  "Name": "Thời sự",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055c7"
+  },
+  "Name": "Góc nhìn",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055c8"
+  },
+  "Name": "Thế giới",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055c9"
+  },
+  "Name": "Video",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055ca"
+  },
+  "Name": "Podcasts",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055cb"
+  },
+  "Name": "Kinh doanh",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055cc"
+  },
+  "Name": "Khoa học",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055cd"
+  },
+  "Name": "Giải trí",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055ce"
+  },
+  "Name": "Thể thao",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055cf"
+  },
+  "Name": "Pháp luật",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d0"
+  },
+  "Name": "Giáo dục",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d1"
+  },
+  "Name": "Sức khỏe",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d2"
+  },
+  "Name": "Đời sống",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d3"
+  },
+  "Name": "Du lịch",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d4"
+  },
+  "Name": "Số hóa",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d5"
+  },
+  "Name": "Xe",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d6"
+  },
+  "Name": "Ý kiến",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d7"
+  },
+  "Name": "Tâm sự",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d8"
+  },
+  "Name": "Hài",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055d9"
+  },
+  "Name": "Giao thông",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055da"
+  },
+  "Name": "Dân sinh",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055db"
+  },
+  "Name": "Tư liệu",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055dc"
+  },
+  "Name": "Phân tích",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055dd"
+  },
+  "Name": "Bất động sản",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055de"
+  },
+  "Name": "Ẩm thực",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055df"
+  },
+  "Name": "Công nghệ",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055e0"
+  },
+  "Name": "IT",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055e1"
+  },
+  "Name": "Việc làm",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055e2"
+  },
+  "Name": "Chứng khoán",
+  "IsDeleted": false
+},{
+  "_id": {
+    "$oid": "6389769183546584963055e3"
+  },
+  "Name": "Phát minh",
+  "IsDeleted": false
+}]

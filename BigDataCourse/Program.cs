@@ -27,7 +27,6 @@ builder.Services.Configure<DbSettings>(option =>
 });
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUserActionRepository, UserActionRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

@@ -15,11 +15,13 @@ namespace BigDataCourse.Areas.Admin.Controllers
         private readonly IAdminRepository _adminRepository;
         private readonly IUserActionRepository _userActionRepository;
         private readonly IArticleRepository _articleRepository;
-        public LoginController(IAdminRepository adminRepository, IUserActionRepository userActionRepository, IArticleRepository articleRepository)
+        private readonly IUserRepository _userRepository;
+        public LoginController(IAdminRepository adminRepository, IUserActionRepository userActionRepository, IArticleRepository articleRepository, IUserRepository userRepository)
         {
             this._adminRepository = adminRepository;
             this._userActionRepository = userActionRepository;
             this._articleRepository = articleRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -33,7 +35,7 @@ namespace BigDataCourse.Areas.Admin.Controllers
             Models.Admin res = await _adminRepository.Login(ad.UserName, ad.Password);
             if (res != null)
             {
-                HttpContext.Session.SetString("_user", JsonSerializer.Serialize(res));
+                HttpContext.Session.SetString("_admin", JsonSerializer.Serialize(res));
                 return RedirectToAction("Index", "Article");
             }
             ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng!");
@@ -42,6 +44,7 @@ namespace BigDataCourse.Areas.Admin.Controllers
 
         public IActionResult Loguot()
         {
+            HttpContext.Session.Remove("_admin");
             return RedirectToAction("Index", "Login");
         }
 
@@ -64,6 +67,20 @@ namespace BigDataCourse.Areas.Admin.Controllers
         //    return View();
         //}
 
+        public async Task<IActionResult> Add3()
+        {
+            for(int i=1; i<=3000; i++)
+            {
+                User u = new User(i, "User "+i.ToString());
+                u.PhoneNumber = "";
+                u.Email = "user" + i.ToString() + "@gmail.com";
+                u.Password = "123";
+                await _userRepository.Create(u);
+            }
+
+            return View();
+        }
+
         public async Task<IActionResult> Add2()
         {
             string[] rows = tmp.Split("\r\n");
@@ -76,7 +93,9 @@ namespace BigDataCourse.Areas.Admin.Controllers
                     list.Add(new Tag(strs[i].Trim()));
                 }
                 Article u = new Article(int.Parse(strs[0]), strs[1], list);
-
+                u.Content = "";
+                u.CreatedDate = DateTime.Now;
+                u.Image = "";
                 await _articleRepository.Create(u);
             }
 

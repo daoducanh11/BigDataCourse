@@ -64,6 +64,23 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<Article> GetById(string id)
+        {
+            try
+            {
+                ObjectId internalId = GetInternalId(id);
+                Article a = await _context.Articles
+                                .Find(a => a._id == internalId)
+                                .FirstOrDefaultAsync();
+                return a;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<Article> Create(Article item)
         {
             try
@@ -83,7 +100,10 @@ namespace BigDataCourse.Areas.Admin.Data
             ObjectId internalId = GetInternalId(id);
             var filter = Builders<Article>.Filter.Eq(s => s._id, internalId);
             var update = Builders<Article>.Update
-                            .Set(s => s.Name, item.Name);
+                            .Set(s => s.Name, item.Name)
+                            .Set(s => s.Content, item.Content)
+                            .Set(s => s.Image, item.Image)
+                            .Set(s => s.Tags, item.Tags);
             try
             {
                 UpdateResult actionResult = await _context.Articles.UpdateOneAsync(filter, update);

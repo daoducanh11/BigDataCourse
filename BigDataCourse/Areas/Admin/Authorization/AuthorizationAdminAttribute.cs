@@ -7,7 +7,7 @@ namespace BigDataCourse.Areas.Admin.Authorization
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.HttpContext.Session.GetString("_user") == null)
+            if (filterContext.HttpContext.Session.GetString("_admin") == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));
