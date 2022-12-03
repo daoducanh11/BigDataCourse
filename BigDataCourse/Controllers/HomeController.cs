@@ -4,6 +4,7 @@ using BigDataCourse.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace BigDataCourse.Controllers
 {
@@ -35,18 +36,28 @@ namespace BigDataCourse.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
+            ViewBag.listTag = await _tagRepository.GetAll();
+            ViewBag.recent = await _articleRepository.Get("", 3, 5);
+            ViewBag.popular = await _articleRepository.Get("", 3, 10);
             Article a = await _articleRepository.GetByArticleId(id);
             if (HttpContext.Session.GetString("_user") != null)
             {
                 User u = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("_user"));
                 UserAction ua = new UserAction(DateTime.Now.Day, "View", u.UserID, u.Name, a.ArticleID, a.Name);
                 ua.CreatedAt = DateTime.Now;
+                _userActionRepository.Create(ua);
             }
             return View(a);
         }
 
-        public async Task<IActionResult> Interactive(string value)
+        [HttpPost]
+        public async Task<IActionResult> Interactive(int id, string value)
         {
+            Article a = await _articleRepository.GetByArticleId(id);
+            User u = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("_user"));
+            UserAction ua = new UserAction(DateTime.Now.Day, value, u.UserID, u.Name, a.ArticleID, a.Name);
+            ua.CreatedAt = DateTime.Now;
+            //_userActionRepository.Create(ua);
             return View();
         }
 

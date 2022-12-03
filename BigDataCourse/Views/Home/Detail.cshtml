@@ -1,0 +1,127 @@
+﻿@model BigDataCourse.Areas.Admin.Models.Article
+@{
+    ViewData["Title"] = Model.Name;
+}
+<div class="latest_newsarea">
+    <span>Tag</span>
+    <ul id="ticker01" class="news_sticker">
+        @foreach (var item in ViewBag.listTag)
+        {
+            <li><a href="#">@item.Name</a></li>
+        }
+    </ul>
+</div>
+
+<section id="contentbody">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="row">
+                <div class="middle_bar">
+                    <div class="single_post_area">
+                        <ol class="breadcrumb">
+                            <li><a href="/"><i class="fa fa-home"></i>Trang chủ<i class="fa fa-angle-right"></i></a></li>
+                            <li class="active">@Model.Name</li>
+                        </ol>
+                        <h2 class="post_title wow ">@Model.Name</h2>
+                        <a href="#" class="post_date"><i class="fa fa-clock-o"></i>@Model.CreatedDate</a>
+                        <div class="single_post_content">
+                            @Html.Raw(Model.Content)
+                            
+                        </div>
+                        @if (Context.Session.GetString("_user") == null)
+                        {
+                            <div style="background-color: #fff; padding: 20px;">
+                                <button type="button" onclick="Interactive('UpVote')" class="btn btn-success">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true" style="margin-right: 4px;"></i>Thích (<span id="like">@Model.UpVote</span>)
+                                </button>
+                                <button type="button" onclick="Interactive('DownVote')" class="btn btn-warning">
+                                    <i class="fa fa-thumbs-down" aria-hidden="true" style="margin-right: 4px;"></i>Không thích (<span id="dislike">@Model.DownVote</span>)
+                                </button>
+                                <button type="button" onclick="Interactive('Download')" class="btn btn-default">
+                                    <i class="fa fa-download" aria-hidden="true" style="margin-right: 4px;"></i>Tải xuống (<span id="download">@Model.Download</span>)
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="right_bar">
+                    <div class="single_leftbar wow fadeInDown">
+                        <h2><span>Phổ biến</span></h2>
+                        <div class="singleleft_inner">
+                            <ul class="catg3_snav ppost_nav wow fadeInDown">
+                                @foreach (var item in ViewBag.popular)
+                                {
+                                    <li>
+                                        <div class="media">
+                                            <a href="pages/single_page.html" class="media-left">
+                                                <img alt="@item.Name"
+                                                 src="~/TemplateNews/images/70x70.jpg">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="/Home/Detail/@item.ArticleID" class="catg_title">
+                                                    @item.Name
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="single_leftbar wow fadeInDown">
+                        <h2><span>Quảng cáo</span></h2>
+                        <div class="singleleft_inner"> <a href="#"><img alt="" src="~/TemplateNews/images/262x218.jpg"></a></div>
+                    </div>
+                    <div class="single_leftbar wow fadeInDown">
+                        <h2><span>Tag</span></h2>
+                        <div class="singleleft_inner">
+                            <ul class="footer_labels">
+                                @foreach (var item in ViewBag.listTag)
+                                {
+                                    <li><a href="#">@item.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script>
+
+        function Interactive(value) {
+            if (value == 'UpVote')
+            {
+                document.getElementById("like").innerHTML = @(Model.UpVote + 1);
+                document.getElementById("like").parentElement.classList.add('btn-active');
+            }
+            else if (value == 'DownVote'){
+                document.getElementById("dislike").innerHTML = @(Model.DownVote + 1);
+                document.getElementById("dislike").parentElement.classList.add('btn-active');
+            }
+            else{
+                document.getElementById("download").innerHTML = @(Model.Download + 1)
+                    document.getElementById("download").parentElement.classList.add('btn-active');
+            }
+            $.ajax({
+                    url: "/Home/Interactive",
+                dataType: "json",
+                method: "POST",
+                data: {
+                    id: @Model.ArticleID,
+                    value: value
+                },
+                success: function (res) {
+                    
+                }
+            });
+        }
+    </script>
+}

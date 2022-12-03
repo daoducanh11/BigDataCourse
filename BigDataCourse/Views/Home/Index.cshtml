@@ -20,7 +20,7 @@
                 <div class="sing_commentbox slider_comntbox">
                     <p><i class="fa fa-calendar"></i>@item.CreatedDate</p>
                 </div>
-                <a class="slider_tittle" href="#">@item.Name</a>
+                <a class="slider_tittle" href="/Home/Detail/@item.ArticleID">@item.Name</a>
             </div>
         } 
         </div>
@@ -37,7 +37,7 @@
                                 @foreach (var item in ViewBag.recent)
                                 {
                                     <li>
-                                        <a href="pages/single_page.html"><img src="~/Uploads/@item.Image" alt="@item.Name"></a> <a class="recent_title" href="pages/single_page.html">
+                                        <a href="/Home/Detail/@item.ArticleID"><img src="~/Uploads/@item.Image" alt="@item.Name"></a> <a class="recent_title" href="/Home/Detail/@item.ArticleID">
                                             @item.Name
                                         </a>
                                     </li>
@@ -67,7 +67,7 @@
                         <div class="item active">
                                         <img src="~/Uploads/@ViewBag.slide2[0].Image" alt="@ViewBag.slide2[0].Name">
                                         <div class="carousel-caption">
-                                            <h1><a href="#">@ViewBag.slide2[0].Name</a></h1>
+                                        <h1><a href="/Home/Detail/@ViewBag.slide2[0].ArticleID">@ViewBag.slide2[0].Name</a></h1>
                                         </div>
                                     </div>
                                 @for (var i = 1; i < ViewBag.slide2.Count; i++)
@@ -75,7 +75,7 @@
                             <div class="item">
                                         <img src="~/Uploads/@ViewBag.slide2[i].Image" alt="@ViewBag.slide2[i].Name">
                                         <div class="carousel-caption">
-                                            <h1><a href="#">@ViewBag.slide2[i].Name</a></h1>
+                                            <h1><a href="/Home/Detail/@ViewBag.slide2[i].ArticleID">@ViewBag.slide2[i].Name</a></h1>
                                         </div>
                                     </div>
                         }
@@ -98,7 +98,7 @@
                                                 <img src="~/TemplateNews/images/310x150.jpg" alt="@item.Name">
                                             </a>
                                         </div>
-                                        <a class="catg_title" href="pages/single_page.html">
+                                        <a class="catg_title" href="/Home/Detail/@item.ArticleID">
                                             @item.Name
                                         </a>
                                         <div class="sing_commentbox">
@@ -109,257 +109,6 @@
                     </ul>
                   </div>
                 </div>
-                @*<div class="single_category  wow fadeInDown">
-                  <div class="category_title"> <a href="pages/category-archive.html">Category 2</a></div>
-                  <div class="single_category_inner">
-                    <ul class="catg_nav catg_nav2">
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="#"> <img src="~/TemplateNews/images/310x300.jpg"
-                              alt=""> </a></div>
-                        <a class="catg_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                        <p class="post-summary">Suspendisse mauris dui, interdum vitae vehicula ut, posuere sed lectus.
-                          Nulla facilisi. Curabitur...</p>
-                      </li>
-                      <li>
-                        <div class="catgimg_container"> <a class="catg1_img" href="#"> <img src="~/TemplateNews/images/310x300.jpg"
-                              alt=""> </a></div>
-                        <a class="catg_title" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-                        <div class="sing_commentbox">
-                          <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                          <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                        </div>
-                        <p class="post-summary">Suspendisse mauris dui, interdum vitae vehicula ut, posuere sed lectus.
-                          Nulla facilisi. Curabitur...</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="category_three_fourarea  wow fadeInDown">
-                  <div class="category_three">
-                    <div class="single_category">
-                      <div class="category_title"> <a href="pages/single_page.html">Category 3</a></div>
-                      <div class="single_category_inner">
-                        <ul class="catg_nav catg_nav3">
-                          <li>
-                            <div class="catgimg_container"> <a class="catg1_img" href="pages/single_page.html"> <img
-                                  src="~/TemplateNews/images/292x150.jpg" alt=""> </a></div>
-                            <a class="catg_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                            <p class="post-summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus
-                              nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...
-                            </p>
-                          </li>
-                        </ul>
-                        <div class="catg3_bottompost wow fadeInDown">
-                          <ul class="catg3_snav">
-                            <li>
-                              <div class="media"> <a class="media-left" href="pages/single_page.html"> <img
-                                    src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                                <div class="media-body"> <a class="catg_title" href="pages/single_page.html"> Aliquam
-                                    malesuada diam eget turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="pages/single_page.html"> <img
-                                    src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                                <div class="media-body"> <a class="catg_title" href="pages/single_page.html"> Aliquam
-                                    malesuada diam eget turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="pages/single_page.html"> <img
-                                    src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                                <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget
-                                    turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="pages/single_page.html"> <img
-                                    src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                                <div class="media-body"> <a class="catg_title" href="pages/single_page.html"> Aliquam
-                                    malesuada diam eget turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="category_four wow fadeInDown">
-                    <div class="single_category">
-                      <div class="category_title"> <a href="#">Category 4</a></div>
-                      <div class="single_category_inner">
-                        <ul class="catg_nav catg_nav3">
-                          <li>
-                            <div class="catgimg_container"> <a class="catg1_img" href="pages/single_page.html"> <img
-                                  src="~/TemplateNews/images/292x150.jpg" alt=""> </a></div>
-                            <a class="catg_title" href="pages/single_page.html"> Curabitur ac dictum nisl eu hendrerit
-                              ante</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                            <p class="post-summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus
-                              nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...
-                            </p>
-                          </li>
-                        </ul>
-                        <div class="catg3_bottompost wow fadeInDown">
-                          <ul class="catg3_snav">
-                            <li>
-                              <div class="media"> <a class="media-left" href="pages/single_page.html"> <img
-                                    src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                                <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget
-                                    turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt="">
-                                </a>
-                                <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget
-                                    turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt="">
-                                </a>
-                                <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget
-                                    turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt="">
-                                </a>
-                                <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget
-                                    turpis varius</a>
-                                  <div class="sing_commentbox">
-                                    <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="single_category wow fadeInDown">
-                  <div class="category_title"> <a href="#">Category 5</a></div>
-                  <div class="single_category_inner">
-                    <ul class="catg3_snav catg5_nav">
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="~/TemplateNews/images/70x70.jpg"> </a>
-                          <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis
-                              varius</a>
-                            <div class="sing_commentbox">
-                              <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                              <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>*@
               </div>
             </div>
           </div>
@@ -379,7 +128,7 @@
                                                  src="~/TemplateNews/images/70x70.jpg">
                                             </a>
                                             <div class="media-body">
-                                                <a href="pages/single_page.html" class="catg_title">
+                                                <a href="/Home/Detail/@item.ArticleID" class="catg_title">
                                                     @item.Name
                                                 </a>
                                             </div>
@@ -393,157 +142,6 @@
                   <h2><span>Quảng cáo</span></h2>
                   <div class="singleleft_inner"> <a href="#"><img alt="" src="~/TemplateNews/images/262x218.jpg"></a></div>
                 </div>
-                @*<div class="single_leftbar wow fadeInDown">
-                  <ul class="nav nav-tabs custom-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                        data-toggle="tab">Most Popular</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Most
-                        Reader</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
-                        data-toggle="tab">Recent Comment</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home">
-                      <ul class="catg3_snav ppost_nav wow fadeInDown">
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                      <ul class="catg3_snav ppost_nav wow fadeInDown">
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="messages">
-                      <ul class="catg3_snav ppost_nav wow fadeInDown">
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media"> <a class="media-left" href="#"> <img src="~/TemplateNews/images/70x70.jpg" alt=""> </a>
-                            <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis
-                                varius</a></div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="single_leftbar wow fadeInDown">
-                  <h2><span>Blog Archive</span></h2>
-                  <div class="singleleft_inner">
-                    <div class="blog_archive">
-                      <form action="#">
-                        <select>
-                          <option value="">Blog Archive</option>
-                          <option value="">October(20)</option>
-                        </select>
-                      </form>
-                    </div>
-                  </div>
-                </div>*@
                 <div class="single_leftbar wow fadeInDown">
                   <h2><span>Tag</span></h2>
                   <div class="singleleft_inner">

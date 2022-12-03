@@ -197,7 +197,15 @@ a.logo b{color:#09c}
 .breadcrumb > li a > i{margin-right:5px}
 .breadcrumb > li a > .fa-angle-right{margin-left:5px}
 .post_title{font-size:2em; font-weight:400; margin-bottom:15px; line-height:30px; padding:15px; border-left-style:solid; border-left-width:15px}
-.single_post_content{background-color:#fff; display:inline; float:left; margin-top:40px; padding:40px 20px; width:100%}
+.single_post_content {
+    background-color: #fff;
+    display: inline;
+    float: left;
+    margin-top: 40px;
+    padding: 40px 20px;
+    width: 100%;
+    overflow-x: scroll;
+}
 .single_post_content img{margin-bottom:10px; max-width:100%; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .single_post_content img:hover{opacity:0.75}
 .post_footer{float:left; display:inline; width:100%; margin-top:10px}
@@ -289,4 +297,30 @@ a.logo b{color:#09c}
 
 .carousel-inner > .item > img{
     min-height: 400px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+.btn-active {
+    color: #09c !important;
+    background-color: #fff !important;
 }
