@@ -17,14 +17,18 @@
             <div class="row">
                 <div class="middle_bar">
                     <div class="single_category wow fadeInDown">
+                        <ol class="breadcrumb">
+                            <li><a href="/"><i class="fa fa-home"></i>Trang chủ<i class="fa fa-angle-right"></i></a></li>
+                            <li class="active">Yêu thích</li>
+                        </ol>
                         <div class="single_category_inner">
                             <ul class="catg_nav">
                                 @foreach (var item in Model)
                                 {
                                     <li>
                                         <div class="catgimg_container">
-                                            <a class="catg1_img" href="pages/single_page.html">
-                                                <img src="~/TemplateNews/images/310x150.jpg" alt="@item.Name">
+                                            <a class="catg1_img" href="/Home/Detail/@item.ArticleID">
+                                                <img src="~/Uploads/@item.Image" alt="@item.Name">
                                             </a>
                                         </div>
                                         <a class="catg_title" href="/Home/Detail/@item.ArticleID">
@@ -36,6 +40,9 @@
                                     </li>
                                 }
                             </ul>
+                        </div>
+                        <div class="div-see-more">
+                            <a href="#">Xem thêm</a>
                         </div>
                     </div>
                 </div>

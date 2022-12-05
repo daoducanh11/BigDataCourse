@@ -42,7 +42,7 @@ namespace BigDataCourse.Areas.Admin.Controllers
             return View(ad);
         }
 
-        public IActionResult Loguot()
+        public IActionResult Logout()
         {
             HttpContext.Session.Remove("_admin");
             return RedirectToAction("Index", "Login");
