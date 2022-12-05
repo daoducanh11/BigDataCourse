@@ -1,0 +1,50 @@
+﻿@model List<long>
+@{
+    ViewBag.Title = "Phân tích";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Số lượng độc giả tương tác với bài viết</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid card card-outline card-info">
+        <div id="chart_container">
+            <canvas id="char_"></canvas>
+        </div>
+        </div>
+        </section>
+
+@section scripts{
+    <script src="~/lib/chart.min.js"></script>
+    <script>
+        var x = @Html.Raw(Json.Serialize(ViewBag.lstLable));
+        var y = @Html.Raw(Json.Serialize(Model));
+        var ctx = $('#char_');
+        var chart_ = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: x,
+                datasets: [{
+                    label: "Số độc giả",
+                    data: y,
+                    backgroundColor: 'rgb(154 208 245)',
+                    borderColor: 'rgb(129 197 242)',
+                    borderWidth: 2,
+                    hoverBackgroundColor: 'rgb(255 177 193)',
+                    hoverBorderColor: 'rgb(249 71 109)',
+                    hoverBorderWidth: 2,
+                }]
+            },
+            options: {
+            },
+        })
+    </script>
+}

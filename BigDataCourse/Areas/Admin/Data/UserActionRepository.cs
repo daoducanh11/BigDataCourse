@@ -96,8 +96,24 @@ namespace BigDataCourse.Areas.Admin.Data
         {
             try
             {
-                long res = await _context.UserActions.Find(item => item.ArticleID.Equals(id)).CountDocumentsAsync();
-                return res;
+                var res = await _context.UserActions.Aggregate()
+                    .Match(item => item.ArticleID.Equals(id))
+                    .Group(item => item.UserID, a => new {id = a.Key, total = a.Sum(item => 1)}).ToListAsync();
+                return res.Count;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<long> GetCountByUserID(int id)
+        {
+            try
+            {
+                var res = await _context.UserActions.DistinctAsync(item => item.ArticleID, item => item.UserID.Equals(id) && item.Action.Equals("View"));
+                return res.ToList().Count();
             }
             catch (Exception ex)
             {
