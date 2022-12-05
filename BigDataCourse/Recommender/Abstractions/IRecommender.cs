@@ -14,5 +14,6 @@ namespace BigDataCourse.Recommender.Abstractions
         void Save(string file);
 
         void Load(string file);
+        List<ArticleRating> GetNearestNeighbors(int id, int v);
     }
 }

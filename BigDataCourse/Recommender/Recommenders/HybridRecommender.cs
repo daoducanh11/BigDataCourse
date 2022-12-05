@@ -103,6 +103,11 @@ namespace BigDataCourse.Recommender.Recommenders
                 classifier.Load(file + ".rm" + (n++));
             }
         }
+
+        public List<ArticleRating> GetNearestNeighbors(int id, int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

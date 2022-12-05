@@ -94,8 +94,8 @@
                         {
                                     <li>
                                         <div class="catgimg_container">
-                                            <a class="catg1_img" href="pages/single_page.html">
-                                                <img src="~/TemplateNews/images/310x150.jpg" alt="@item.Name">
+                                            <a class="catg1_img" href="/Home/Detail/@item.ArticleID">
+                                                <img src="~/Uploads/@item.Image" alt="@item.Name">
                                             </a>
                                         </div>
                                         <a class="catg_title" href="/Home/Detail/@item.ArticleID">
@@ -108,6 +108,10 @@
                                 }
                     </ul>
                   </div>
+                        <div class="div-see-more">
+                            <a href="#">Xem thêm</a>
+                        </div>
+
                 </div>
               </div>
             </div>
@@ -123,9 +127,9 @@
                                 {
                                     <li>
                                         <div class="media">
-                                            <a href="pages/single_page.html" class="media-left">
+                                            <a href="/Home/Detail/@item.ArticleID" class="media-left">
                                                 <img alt="@item.Name"
-                                                 src="~/TemplateNews/images/70x70.jpg">
+                                                 src="~/Uploads/@item.Image">
                                             </a>
                                             <div class="media-body">
                                                 <a href="/Home/Detail/@item.ArticleID" class="catg_title">

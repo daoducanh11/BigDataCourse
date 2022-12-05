@@ -51,9 +51,9 @@
     </footer>*@
 
 
-    <div id="preloader">
+    @*<div id="preloader">
     <div id="status">&nbsp;</div>
-  </div>
+  </div>*@
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
   <div class="container">
     <div class="box_wrapper">
@@ -69,9 +69,12 @@
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav custom_nav">
                   <li><a href="/">Trang chủ</a></li>
-                  <li><a href="/Recommend">Yêu thích</a></li>
+                                    @if (Context.Session.GetString("_userName") != null)
+                                    {
+                                                                            <li><a href="/Recommend">Yêu thích</a></li>
+                                    }
                   <li><a href="#">Liên hệ</a></li>
-                  @if(Context.Session.GetString("_user") != null)
+                                    @if (Context.Session.GetString("_userName") != null)
                   {
                                         <li><a href="/User/Logout">Đăng xuất</a></li>
                   }

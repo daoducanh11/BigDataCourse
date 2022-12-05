@@ -40,7 +40,7 @@ h2{font-family:'Varela',sans-serif; line-height:23px}
 #shide{overflow:hidden; position:absolute; top:-80px; width:100%; z-index:9999999; left:0; display:none; background-color:#fff; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 #search-hide input{background-color:rgba(255,255,255,1); border:0 none; font-family:"Open Sans"; font-size:16px; font-style:normal; font-weight:400; height:40px; padding:0 15px; width:95%; float:left}
 button.remove{background-color:transparent; border:0 none; color:#555; cursor:pointer; font-size:1.5em; float:right; padding-top:5px}
-.header_bottom{display:inline; float:left; padding:30px 15px; width:100%}
+.header_bottom{display:inline; float:left; padding:15px; width:100%}
 .logo_area{width:25%; float:left; display:inline}
 .logo{font-size:35px; line-height:26px; font-family:"Varela",sans-serif; color:#252525}
 .logo:hover, .logo:focus{text-decoration:none; outline:none}
@@ -131,7 +131,7 @@ a.logo b{color:#09c}
 .catg_nav3 .catgimg_container{width:100%}
 .catg3_bottompost{float:left; display:inline; width:100%; margin-top:10px}
 .catg3_snav li{border-top:1px solid #f1f1f1; display:block; padding-top:15px; padding-bottom:5px}
-.catg3_snav .media-left{width:70px; height:70px}
+.catg3_snav .media-left{width:100px;}
 .catg3_snav .media-left:hover{opacity:0.75}
 .catg3_snav .media-left > img{width:100%; height:100%}
 .catg5_nav li{border-top:medium none; float:left; padding-bottom:0; padding-top:5px; width:49%}
@@ -205,6 +205,7 @@ a.logo b{color:#09c}
     padding: 40px 20px;
     width: 100%;
     overflow-x: scroll;
+    margin-bottom: 15px;
 }
 .single_post_content img{margin-bottom:10px; max-width:100%; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .single_post_content img:hover{opacity:0.75}
@@ -322,5 +323,15 @@ a.logo b{color:#09c}
 
 .btn-active {
     color: #09c !important;
-    background-color: #fff !important;
+}
+
+.div-see-more {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.div-see-more a {
+    border: 1px solid;
+    padding: 10px 15px;
+    border-radius: 3px;
 }

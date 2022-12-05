@@ -48,6 +48,21 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<List<Article>> GetByListID(List<int> list)
+        {
+            try
+            {
+                List<Article> lst = await _context.Articles.Find(item => list.Contains(item.ArticleID))
+                    .ToListAsync();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<int> GetNewId()
         {
             try

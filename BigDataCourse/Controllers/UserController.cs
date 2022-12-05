@@ -1,7 +1,7 @@
 ﻿using BigDataCourse.Areas.Admin.Data.Interface;
 using BigDataCourse.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+using Microsoft.CodeAnalysis.Recommendations;
 
 namespace BigDataCourse.Controllers
 {
@@ -29,7 +29,12 @@ namespace BigDataCourse.Controllers
             User res = await _userRepository.Login(Name, Password);
             if (res != null)
             {
-                HttpContext.Session.SetString("_user", JsonSerializer.Serialize(res));
+                if (System.IO.File.Exists("recommender.dat"))
+                {
+                    System.IO.File.Delete("recommender.dat");
+                }
+                HttpContext.Session.SetInt32("_user", res.UserID);
+                HttpContext.Session.SetString("_userName", res.Name);
                 return RedirectToAction("Index", "Recommend");
             }
             ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng!");
@@ -39,6 +44,7 @@ namespace BigDataCourse.Controllers
         public IActionResult Loguot()
         {
             HttpContext.Session.Remove("_user");
+            HttpContext.Session.Remove("_userName");
             return RedirectToAction("Login", "User");
         }
 

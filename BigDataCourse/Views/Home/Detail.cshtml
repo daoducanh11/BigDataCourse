@@ -1,6 +1,15 @@
 ﻿@model BigDataCourse.Areas.Admin.Models.Article
 @{
     ViewData["Title"] = Model.Name;
+    string isUpVote = "";
+    string isDownVote = "";
+    string isDownload = "";
+    if (ViewBag.isUpVote)
+        isUpVote = "btn-active";
+    if (ViewBag.isDownVote)
+        isDownVote = "btn-active";
+    if (ViewBag.isDownload)
+        isDownload = "btn-active";
 }
 <div class="latest_newsarea">
     <span>Tag</span>
@@ -23,25 +32,23 @@
                             <li class="active">@Model.Name</li>
                         </ol>
                         <h2 class="post_title wow ">@Model.Name</h2>
+                        <a href="#" class="author_name"><i class="fa fa-eye" aria-hidden="true"></i>@ViewBag.countView lượt xem</a>
                         <a href="#" class="post_date"><i class="fa fa-clock-o"></i>@Model.CreatedDate</a>
                         <div class="single_post_content">
                             @Html.Raw(Model.Content)
                             
                         </div>
-                        @if (Context.Session.GetString("_user") == null)
-                        {
-                            <div style="background-color: #fff; padding: 20px;">
-                                <button type="button" onclick="Interactive('UpVote')" class="btn btn-success">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true" style="margin-right: 4px;"></i>Thích (<span id="like">@Model.UpVote</span>)
-                                </button>
-                                <button type="button" onclick="Interactive('DownVote')" class="btn btn-warning">
-                                    <i class="fa fa-thumbs-down" aria-hidden="true" style="margin-right: 4px;"></i>Không thích (<span id="dislike">@Model.DownVote</span>)
-                                </button>
-                                <button type="button" onclick="Interactive('Download')" class="btn btn-default">
-                                    <i class="fa fa-download" aria-hidden="true" style="margin-right: 4px;"></i>Tải xuống (<span id="download">@Model.Download</span>)
-                                </button>
-                            </div>
-                        }
+                        <div style="background-color: #fff; padding: 20px;">
+                            <button type="button" onclick="Interactive('UpVote')" class="btn btn-success @isUpVote">
+                                <i class="fa fa-thumbs-up" aria-hidden="true" style="margin-right: 4px;"></i>Thích (<span id="like">@ViewBag.countUpVote</span>)
+                            </button>
+                            <button type="button" onclick="Interactive('DownVote')" class="btn btn-warning @isDownload">
+                                <i class="fa fa-thumbs-down" aria-hidden="true" style="margin-right: 4px;"></i>Không thích (<span id="dislike">@ViewBag.countDownVote</span>)
+                            </button>
+                            <button type="button" onclick="Interactive('Download')" class="btn btn-default @isDownload">
+                                <i class="fa fa-download" aria-hidden="true" style="margin-right: 4px;"></i>Tải xuống (<span id="download">@ViewBag.countDownload</span>)
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,7 +57,7 @@
             <div class="row">
                 <div class="right_bar">
                     <div class="single_leftbar wow fadeInDown">
-                        <h2><span>Phổ biến</span></h2>
+                        <h2><span>Có thể bạn sẽ thích</span></h2>
                         <div class="singleleft_inner">
                             <ul class="catg3_snav ppost_nav wow fadeInDown">
                                 @foreach (var item in ViewBag.popular)
@@ -92,23 +99,60 @@
             </div>
         </div>
     </div>
+    @if (Context.Session.GetString("_userName") != null)
+    {
+        <input id="isLogin" type="hidden" value="@ViewBag.countDownload" />
+    }
 </section>
 @section scripts{
     <script>
-
+        var isLogin = false;
+        if (document.getElementById("isLogin") != undefined)
+        isLogin = true;
         function Interactive(value) {
+            if(!isLogin){
+                alert("Hãy đăng nhập để tiếp tục");
+                return;
+            }
             if (value == 'UpVote')
             {
-                document.getElementById("like").innerHTML = @(Model.UpVote + 1);
-                document.getElementById("like").parentElement.classList.add('btn-active');
+                let up = document.getElementById("like");
+                if (!up.parentElement.classList.contains('btn-active')) {
+                    up.innerHTML = @(ViewBag.countUpVote + 1);
+                    up.parentElement.classList.add('btn-active');
+                            up.disabled = true;
+                    let down = document.getElementById("dislike");
+                    if (!down.parentElement.classList.contains('btn-active')) {
+                        down.innerHTML = @(ViewBag.countDownVote - 1);
+                        down.parentElement.classList.remove('btn-active');
+                        down.disabled = false;
+                    }
+                }
+                else
+                return;
             }
             else if (value == 'DownVote'){
-                document.getElementById("dislike").innerHTML = @(Model.DownVote + 1);
-                document.getElementById("dislike").parentElement.classList.add('btn-active');
+                let down = document.getElementById("dislike");
+                if (!down.parentElement.classList.contains('btn-active')) {
+                    down.innerHTML = @(ViewBag.countDownVote + 1);
+                    down.parentElement.classList.add('btn-active');
+                    down.disabled = true;
+                    let up = document.getElementById("like");
+                    if (!up.parentElement.classList.contains('btn-active')){
+                        up.innerHTML = @(ViewBag.countUpVote - 1);
+                        up.parentElement.classList.remove('btn-active');
+                        up.disabled = false;
+                    }
+                }
+                else
+                    return;
             }
             else{
-                document.getElementById("download").innerHTML = @(Model.Download + 1)
+                let d = document.getElementById("isLogin");
+                document.getElementById("download").innerHTML = d.value + 1;
                     document.getElementById("download").parentElement.classList.add('btn-active');
+                    d.value += 1;
+                alert("Tải xuống thành công");
             }
             $.ajax({
                     url: "/Home/Interactive",

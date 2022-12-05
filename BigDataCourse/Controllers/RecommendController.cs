@@ -1,10 +1,13 @@
 ﻿using BigDataCourse.Areas.Admin.Data.Interface;
+using BigDataCourse.Areas.Admin.Models;
 using BigDataCourse.Recommender.Abstractions;
 using BigDataCourse.Recommender.Comparers;
+using BigDataCourse.Recommender.Objects;
 using BigDataCourse.Recommender.Parsers;
 using BigDataCourse.Recommender.Raters;
 using BigDataCourse.Recommender.Recommenders;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BigDataCourse.Controllers
 {
@@ -37,11 +40,32 @@ namespace BigDataCourse.Controllers
 
             IRecommender recommender;
             recommender = new UserCollaborativeFilterRecommender(compare, rate, 50);
-            recommender.Train(db);
+            if (System.IO.File.Exists("recommender.dat"))
+            {
+                try
+                {
+                    recommender.Load("recommender.dat");
+                }
+                catch
+                {
+                    recommender.Train(db);
+                    recommender.Save("recommender.dat");
+                }
+            }
+            else
+            {
+                recommender.Train(db);
+                recommender.Save("recommender.dat");
+            }
 
-            var recommende = recommender.GetSuggestions(84, 5);
+            int uId = (int)HttpContext.Session.GetInt32("_user");
+            List<Suggestion> lst = recommender.GetSuggestions(uId, 10);
 
-            return View();
+            List<int> listRes = new List<int>();
+            foreach (Suggestion s in lst)
+                listRes.Add(s.ArticleID);
+            ViewBag.listTag = await _tagRepository.GetAll();
+            return View(await _articleRepository.GetByListID(listRes));
         }
     }
 }

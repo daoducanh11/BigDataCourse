@@ -211,6 +211,11 @@ namespace BigDataCourse.Recommender.Recommenders
                 }
             }
         }
+
+        public List<ArticleRating> GetNearestNeighbors(int id, int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

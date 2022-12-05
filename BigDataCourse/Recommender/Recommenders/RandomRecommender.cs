@@ -43,6 +43,11 @@ namespace BigDataCourse.Recommender.Recommenders
         {
             throw new NotImplementedException();
         }
+
+        public List<ArticleRating> GetNearestNeighbors(int id, int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

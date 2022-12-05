@@ -14,10 +14,6 @@ namespace BigDataCourse.Areas.Admin.Models
         public string Image { get; set; }
         public string Content { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int View { get; set; }
-        public int UpVote { get; set; }
-        public int DownVote { get; set; }
-        public int Download { get; set; }
         public bool IsDeleted { get; set; }
 
         public List<Tag> Tags { get; set; }

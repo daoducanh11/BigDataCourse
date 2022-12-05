@@ -122,7 +122,7 @@ namespace BigDataCourse.Recommender.Recommenders
             return suggestions.Take(numSuggestions).ToList();
         }
 
-        private List<ArticleRating> GetNearestNeighbors(int articleId, int numArticles)
+        public List<ArticleRating> GetNearestNeighbors(int articleId, int numArticles)
         {
             List<ArticleRating> neighbors = new List<ArticleRating>();
             int mainArticleIndex = ratings.ArticleIndexToID.IndexOf(articleId);
@@ -217,6 +217,7 @@ namespace BigDataCourse.Recommender.Recommenders
 
             FillTransposedRatings();
         }
+
     }
 
 }

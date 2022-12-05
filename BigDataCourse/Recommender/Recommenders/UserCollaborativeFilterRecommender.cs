@@ -1,4 +1,5 @@
-﻿using BigDataCourse.Recommender.Abstractions;
+﻿using BigDataCourse.Areas.Admin.Models;
+using BigDataCourse.Recommender.Abstractions;
 using BigDataCourse.Recommender.Mathematics;
 using BigDataCourse.Recommender.Objects;
 using BigDataCourse.Recommender.Parsers;
@@ -211,6 +212,11 @@ namespace BigDataCourse.Recommender.Recommenders
                     ratings.ArticleIndexToID.Add(int.Parse(r.ReadLine()));
                 }
             }
+        }
+
+        public List<ArticleRating> GetNearestNeighbors(int id, int v)
+        {
+            throw new NotImplementedException();
         }
     }
 

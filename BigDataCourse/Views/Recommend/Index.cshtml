@@ -1,0 +1,67 @@
+﻿@model List<BigDataCourse.Areas.Admin.Models.Article>
+@{
+    ViewData["Title"] = "Yêu thích";
+}
+<div class="latest_newsarea">
+    <span>Tag</span>
+    <ul id="ticker01" class="news_sticker">
+        @foreach (var item in ViewBag.listTag)
+        {
+            <li><a href="#">@item.Name</a></li>
+        }
+    </ul>
+</div>
+<section id="contentbody">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="row">
+                <div class="middle_bar">
+                    <div class="single_category wow fadeInDown">
+                        <div class="single_category_inner">
+                            <ul class="catg_nav">
+                                @foreach (var item in Model)
+                                {
+                                    <li>
+                                        <div class="catgimg_container">
+                                            <a class="catg1_img" href="pages/single_page.html">
+                                                <img src="~/TemplateNews/images/310x150.jpg" alt="@item.Name">
+                                            </a>
+                                        </div>
+                                        <a class="catg_title" href="/Home/Detail/@item.ArticleID">
+                                            @item.Name
+                                        </a>
+                                        <div class="sing_commentbox">
+                                            <p><i class="fa fa-calendar"></i>@item.CreatedDate </p>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="right_bar">
+                    <div class="single_leftbar wow fadeInDown">
+                        <h2><span>Quảng cáo</span></h2>
+                        <div class="singleleft_inner"> <a href="#"><img src="~/TemplateNews/images/150x600.jpg" alt=""></a></div>
+                    </div>
+                    <div class="single_leftbar wow fadeInDown">
+                        <h2><span>Tag</span></h2>
+                        <div class="singleleft_inner">
+                            <ul class="footer_labels">
+                                @foreach (var item in ViewBag.listTag)
+                                {
+                                    <li><a href="#">@item.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

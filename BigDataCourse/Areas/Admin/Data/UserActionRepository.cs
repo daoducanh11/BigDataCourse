@@ -62,6 +62,50 @@ namespace BigDataCourse.Areas.Admin.Data
             }
         }
 
+        public async Task<long> GetCountByArticleID(int id, string action)
+        {
+            try
+            {
+                long res = await _context.UserActions.Find(item => item.ArticleID.Equals(id) && item.Action.Equals(action)).CountDocumentsAsync();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<bool> IsActionByUserID(int userId, int articleId, string action)
+        {
+            try
+            {
+                long res = await _context.UserActions.Find(item => item.UserID.Equals(userId) && item.ArticleID.Equals(articleId) && item.Action.Equals(action)).CountDocumentsAsync();
+                if(res > 0) 
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+            return false;
+        }
+
+        public async Task<long> GetCountByArticleID(int id)
+        {
+            try
+            {
+                long res = await _context.UserActions.Find(item => item.ArticleID.Equals(id)).CountDocumentsAsync();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<UserAction> Create(UserAction item)
         {
             try
