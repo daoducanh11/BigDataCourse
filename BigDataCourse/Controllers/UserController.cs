@@ -41,7 +41,7 @@ namespace BigDataCourse.Controllers
             return View();
         }
 
-        public IActionResult Loguot()
+        public IActionResult Logout()
         {
             HttpContext.Session.Remove("_user");
             HttpContext.Session.Remove("_userName");
