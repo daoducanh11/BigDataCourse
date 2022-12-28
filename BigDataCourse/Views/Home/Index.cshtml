@@ -15,6 +15,10 @@
         <div class="owl-carousel">
         @foreach (var item in ViewBag.slide1)
         {
+            if (item.Image.Length == 0)
+            {
+                item.Image = "noimage.png";
+            }
             <div class="signle_iteam">
                 <img src="~/Uploads/@item.Image" alt="@item.Name">
                 <div class="sing_commentbox slider_comntbox">
@@ -36,6 +40,10 @@
                     <ul class="recentpost_nav wow fadeInDown">
                                 @foreach (var item in ViewBag.recent)
                                 {
+                                    if (item.Image.Length == 0)
+                                    {
+                                        item.Image = "noimage.png";
+                                    }
                                     <li>
                                         <a href="/Home/Detail/@item.ArticleID"><img src="~/Uploads/@item.Image" alt="@item.Name"></a> <a class="recent_title" href="/Home/Detail/@item.ArticleID">
                                             @item.Name
@@ -72,6 +80,10 @@
                                     </div>
                                 @for (var i = 1; i < ViewBag.slide2.Count; i++)
                                 {
+                                    if (ViewBag.slide2[i].Image.Length == 0)
+                                    {
+                                        ViewBag.slide2[i].Image = "noimage.png";
+                                    }
                             <div class="item">
                                         <img src="~/Uploads/@ViewBag.slide2[i].Image" alt="@ViewBag.slide2[i].Name">
                                         <div class="carousel-caption">
@@ -92,6 +104,10 @@
                     <ul class="catg_nav">
                         @foreach (var item in Model)
                         {
+                                    if (item.Image.Length == 0)
+                                    {
+                                        item.Image = "noimage.png";
+                                    }
                                     <li>
                                         <div class="catgimg_container">
                                             <a class="catg1_img" href="/Home/Detail/@item.ArticleID">
@@ -125,6 +141,10 @@
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
                                 @foreach (var item in ViewBag.popular)
                                 {
+                                    if (item.Image.Length == 0)
+                                    {
+                                        item.Image = "noimage.png";
+                                    }
                                     <li>
                                         <div class="media">
                                             <a href="/Home/Detail/@item.ArticleID" class="media-left">

@@ -25,6 +25,10 @@
                             <ul class="catg_nav">
                                 @foreach (var item in Model)
                                 {
+                                    if (item.Image.Length == 0)
+                                    {
+                                        item.Image = "noimage.png";
+                                    }
                                     <li>
                                         <div class="catgimg_container">
                                             <a class="catg1_img" href="/Home/Detail/@item.ArticleID">

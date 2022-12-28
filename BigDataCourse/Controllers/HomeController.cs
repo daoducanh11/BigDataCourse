@@ -29,8 +29,10 @@ namespace BigDataCourse.Controllers
             _userRepository = userRepository;
         }
 
-        public async Task<IActionResult> Index(string keyword = "")
+        public async Task<IActionResult> Index(string keyword)
         {
+            if(keyword == null)
+                keyword = "";
             ViewBag.keyword = keyword;
             ViewBag.listTag = await _tagRepository.GetAll();
             ViewBag.slide1 = await _articleRepository.Get(keyword, 1, 5);

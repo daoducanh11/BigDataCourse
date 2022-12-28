@@ -62,6 +62,10 @@
                             <ul class="catg3_snav ppost_nav wow fadeInDown">
                                 @foreach (var item in ViewBag.popular)
                                 {
+                                    if (item.Image.Length == 0)
+                                    {
+                                        item.Image = "noimage.png";
+                                    }
                                     <li>
                                         <div class="media">
                                             <a href="/Home/Detail/@item.ArticleID" class="media-left">
